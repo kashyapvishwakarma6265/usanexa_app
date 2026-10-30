@@ -55,3 +55,4 @@ Fix (recommended, 1 line) in `backend/routes/auth.py`, in the `login()` return v
 Then redeploy the backend (Render). The app sends it back as the `usanex_session` cookie itself.
 Also make sure `API_BASE_URL` is your `https://usanex.onrender.com` URL and that you test on Expo Go / a device,
 not the web preview (browsers block this cookie across origins).
+"# usanexa_app" 
