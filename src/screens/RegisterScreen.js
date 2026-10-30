@@ -6,6 +6,8 @@ import { api } from "../api/client";
 import { EP } from "../api/endpoints";
 import useOtpTimer from "../components/useOtpTimer";
 import { Brand, Field, Banner, PrimaryButton, SecondaryButton } from "../components/ui";
+import logo from "../../assets/images/utanexa-logo.jpeg";
+import { Image } from "react-native";
 
 export default function RegisterScreen({ navigation }) {
   const [step, setStep] = useState(1);
@@ -54,15 +56,24 @@ export default function RegisterScreen({ navigation }) {
     <SafeAreaView className="flex-1 bg-authBg">
       <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : undefined} className="flex-1">
         <ScrollView contentContainerClassName="flex-grow justify-center p-4" keyboardShouldPersistTaps="handled">
-          <View className="rounded-3xl border border-white/15 bg-[#0d1527]/95 px-5 pt-8 pb-6">
+          <View className="rounded-3xl border border-white/15 bg-[#0d1527]/95 px-6 pt-7 pb-7">
+           {/* Small Logo Only - No Brand Name */}
+                      <View className="items-center mb-7">
+                        <Image
+                          source={logo}
+                          style={{
+                            width: 55,
+                            height: 55,
+                            resizeMode: "contain",
+                          }}
+                        />
+                      </View>
             <View className="mb-7"><Brand size={32} /></View>
 
             {step === 1 && (
               <>
                 <View className="items-center mb-6">
-                  <Text className="text-white text-[26px] font-bold text-center">
-                    Create your <Text className="text-brandLight">UtaNexa</Text> account
-                  </Text>
+                  
                   <Text className="text-[#9ba8c1] text-[13px] text-center mt-2.5">Create your account and connect with real people.</Text>
                 </View>
                 <View className="gap-4">

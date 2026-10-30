@@ -19,7 +19,8 @@
         {
           "photosPermission": "UtaNexa needs photo access to upload media."
         }
-      ]
+      ],
+      "expo-video"
     ],
     "platforms": [
       "ios",

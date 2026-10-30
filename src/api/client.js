@@ -109,8 +109,18 @@ export async function api(path, { method = "GET", body, form, signal, silent401 
 
 /** Open a WebSocket to the backend with the session cookie attached. */
 export function openSocket(path) {
-  const url = WS_BASE_URL + path;
-  if (isWeb) return new WebSocket(url);
+  let url = WS_BASE_URL + path;
+
+  if (isWeb) {
+    // Browser WS API cannot set Cookie header, and cross-origin cookies
+    // may be blocked by SameSite. So pass the token as a query param.
+    if (session) {
+      const sep = url.includes("?") ? "&" : "?";
+      url += `${sep}token=${encodeURIComponent(session)}`;
+    }
+    return new WebSocket(url);
+  }
+
   const ck = cookieHeader();
   // React Native's WebSocket accepts a 3rd `options` argument with headers.
   return new WebSocket(url, undefined, ck ? { headers: { Cookie: ck } } : undefined);

@@ -6,6 +6,8 @@ import { api } from "../api/client";
 import { EP } from "../api/endpoints";
 import useOtpTimer from "../components/useOtpTimer";
 import { Brand, Field, Banner, PrimaryButton, SecondaryButton } from "../components/ui";
+import logo from "../../assets/images/utanexa-logo.jpeg";
+import { Image } from "react-native";
 
 export default function ForgotPasswordScreen({ navigation }) {
   const [step, setStep] = useState(1);
@@ -51,6 +53,16 @@ export default function ForgotPasswordScreen({ navigation }) {
     <SafeAreaView className="flex-1 bg-[#090c10]">
       <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : undefined} className="flex-1">
         <ScrollView contentContainerClassName="flex-grow justify-center px-7 py-8" keyboardShouldPersistTaps="handled">
+            <View className="items-center mb-7">
+                        <Image
+                          source={logo}
+                          style={{
+                            width: 55,
+                            height: 55,
+                            resizeMode: "contain",
+                          }}
+                        />
+                      </View>
           <View className="mb-10"><Brand size={42} /></View>
 
           {step === 1 && (
